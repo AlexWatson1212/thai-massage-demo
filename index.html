@@ -4,69 +4,80 @@ title: Thai Massage Website Template
 description: A warm, professional website template for Thai massage studios, wellness spaces and local treatment rooms.
 ---
 
-<main class="site-main">
+<main class="thai-page">
 
   <div class="demo-banner">
     Demo website template — not a real business. Studio name, treatments, prices, reviews and contact details are examples.
   </div>
 
-  <section class="hero" id="home">
-    <div class="hero-bg">
-      <img src="{{ '/assets/images/hero-massage.webp' | relative_url }}" alt="Calm Thai massage studio interior" fetchpriority="high">
-    </div>
+  <section class="thai-hero" id="home">
+    <div class="container thai-hero-grid">
 
-    <div class="hero-shade"></div>
+      <div class="thai-hero-copy">
+        <p class="thai-eyebrow">Thai Massage Studio</p>
 
-    <div class="container hero-inner">
-      <p class="eyebrow light">Thai Massage Studio</p>
+        <h1>Traditional Thai massage in a calm, professional studio.</h1>
 
-      <h1>Traditional Thai massage in a calm, professional studio.</h1>
+        <p>
+          Skilled, qualified therapists offering authentic Thai and therapeutic massage
+          in Your Town. Ease tension, support recovery and leave feeling lighter.
+        </p>
 
-      <p class="hero-text">
-        Skilled, fully qualified therapists offering authentic Thai and therapeutic massage
-        in Your Town. Ease tension, support recovery and leave feeling lighter.
-      </p>
-
-      <div class="hero-actions">
-        <a href="tel:01234567890" class="btn btn-primary">Book your treatment</a>
-        <a href="#services" class="btn btn-secondary">See treatments</a>
+        <div class="thai-actions">
+          <a href="tel:01234567890" class="thai-btn thai-btn-primary">Book your treatment</a>
+          <a href="#services" class="thai-btn thai-btn-secondary">See treatments</a>
+        </div>
       </div>
+
+      <div class="thai-hero-image">
+        <img
+          src="{{ '/assets/images/hero-massage.webp' | relative_url }}"
+          alt="Calm Thai massage studio interior"
+          fetchpriority="high"
+        >
+      </div>
+
     </div>
   </section>
 
-  <section class="section about-section section-light" id="about">
-    <div class="container about-grid">
-      <div class="about-image">
-        <img src="{{ '/assets/images/about-massage.webp' | relative_url }}" alt="Peaceful massage treatment room" loading="lazy">
+  <section class="thai-section thai-welcome" id="about">
+    <div class="container thai-split">
+
+      <div class="thai-image-card">
+        <img
+          src="{{ '/assets/images/about-massage.webp' | relative_url }}"
+          alt="Peaceful massage treatment room"
+          loading="lazy"
+        >
       </div>
 
       <div>
-        <p class="eyebrow">Welcome</p>
+        <p class="thai-eyebrow">Welcome</p>
 
         <h2>A warm welcome to Lotus Thai Massage.</h2>
 
         <p>
-          Our studio is a quiet, spotless space designed for one thing: to help you
-          leave feeling lighter than you arrived.
+          Our studio is a quiet, spotless space designed for one thing:
+          to help you leave feeling lighter than you arrived.
         </p>
 
         <p>
           Every treatment is given by an experienced, professionally trained therapist
-          and tailored to what your body needs that day. The pace is calm and unhurried —
-          no rush, no pressure, just genuine, skilled care.
+          and tailored to what your body needs that day. No rush, no pressure —
+          just genuine, skilled care.
         </p>
 
-        <div class="about-actions">
-          <a href="tel:01234567890" class="btn btn-primary">Get in touch</a>
-        </div>
+        <a href="tel:01234567890" class="thai-text-link">Get in touch</a>
       </div>
+
     </div>
   </section>
 
-  <section class="section services-section section-cream" id="services">
+  <section class="thai-section thai-services" id="services">
     <div class="container">
-      <div class="section-heading">
-        <p class="eyebrow">Treatments</p>
+
+      <div class="thai-section-heading">
+        <p class="thai-eyebrow">Treatments</p>
 
         <h2>Our treatments.</h2>
 
@@ -76,82 +87,72 @@ description: A warm, professional website template for Thai massage studios, wel
         </p>
       </div>
 
-      <div class="services-grid">
+      <div class="thai-service-list">
 
-        <article class="service-feature">
-          <div class="service-image">
-            <img src="{{ '/assets/images/treatment-traditional-thai.webp' | relative_url }}" alt="Traditional Thai massage treatment" loading="lazy">
-          </div>
-          <div class="service-content">
+        <article class="thai-service-card">
+          <img src="{{ '/assets/images/treatment-traditional-thai.webp' | relative_url }}" alt="Traditional Thai massage treatment" loading="lazy">
+          <div>
             <span>01</span>
             <h3>Traditional Thai Massage</h3>
-            <p>The classic full-body treatment, using rhythmic pressure and gentle stretching to release tension, improve flexibility and leave you deeply relaxed. Performed clothed on a comfortable mat.</p>
+            <p>Rhythmic pressure and gentle stretching to release tension, improve flexibility and leave you deeply relaxed.</p>
           </div>
         </article>
 
-        <article class="service-feature">
-          <div class="service-image">
-            <img src="{{ '/assets/images/treatment-deep-tissue.webp' | relative_url }}" alt="Deep tissue massage treatment" loading="lazy">
-          </div>
-          <div class="service-content">
+        <article class="thai-service-card">
+          <img src="{{ '/assets/images/treatment-deep-tissue.webp' | relative_url }}" alt="Deep tissue massage treatment" loading="lazy">
+          <div>
             <span>02</span>
             <h3>Deep Tissue Massage</h3>
-            <p>Focused, firmer work for tight, knotted muscles. Ideal if you carry stress in your shoulders and back, or train hard and need proper recovery.</p>
+            <p>Focused, firmer work for tight muscles, shoulders, backs and post-training recovery.</p>
           </div>
         </article>
 
-        <article class="service-feature">
-          <div class="service-image">
-            <img src="{{ '/assets/images/treatment-aromatherapy.webp' | relative_url }}" alt="Aromatherapy massage treatment" loading="lazy">
-          </div>
-          <div class="service-content">
+        <article class="thai-service-card">
+          <img src="{{ '/assets/images/treatment-aromatherapy.webp' | relative_url }}" alt="Aromatherapy massage treatment" loading="lazy">
+          <div>
             <span>03</span>
             <h3>Aromatherapy Massage</h3>
-            <p>A slower, soothing treatment with warm essential oils, chosen to calm the mind as well as the body. Our most relaxing option.</p>
+            <p>A slower, soothing treatment with warm essential oils to calm the body and mind.</p>
           </div>
         </article>
 
-        <article class="service-feature">
-          <div class="service-image">
-            <img src="{{ '/assets/images/treatment-head-neck-shoulder.webp' | relative_url }}" alt="Head neck and shoulder massage" loading="lazy">
-          </div>
-          <div class="service-content">
+        <article class="thai-service-card">
+          <img src="{{ '/assets/images/treatment-head-neck-shoulder.webp' | relative_url }}" alt="Head neck and shoulder massage" loading="lazy">
+          <div>
             <span>04</span>
             <h3>Head, Neck & Shoulder Massage</h3>
-            <p>A targeted treatment for desk-based tension, headaches and tight shoulders. Perfect as a shorter session on a busy day.</p>
+            <p>A targeted shorter session for desk-based tension, headaches and tight shoulders.</p>
           </div>
         </article>
 
-        <article class="service-feature">
-          <div class="service-image">
-            <img src="{{ '/assets/images/treatment-couples.webp' | relative_url }}" alt="Couples massage room" loading="lazy">
-          </div>
-          <div class="service-content">
+        <article class="thai-service-card">
+          <img src="{{ '/assets/images/treatment-couples.webp' | relative_url }}" alt="Couples massage room" loading="lazy">
+          <div>
             <span>05</span>
             <h3>Couples Massage</h3>
-            <p>Side-by-side treatments in our double room — a calm hour to unwind together. Popular for birthdays, anniversaries and thoughtful gifts.</p>
+            <p>Side-by-side treatments in a calm double room. Popular for gifts, birthdays and anniversaries.</p>
           </div>
         </article>
 
-        <article class="service-feature">
-          <div class="service-image">
-            <img src="{{ '/assets/images/treatment-body-scrub.webp' | relative_url }}" alt="Thai herbal body scrub treatment" loading="lazy">
-          </div>
-          <div class="service-content">
+        <article class="thai-service-card">
+          <img src="{{ '/assets/images/treatment-body-scrub.webp' | relative_url }}" alt="Thai herbal body scrub treatment" loading="lazy">
+          <div>
             <span>06</span>
             <h3>Thai Herbal Body Scrub</h3>
-            <p>A gentle exfoliating treatment that leaves skin soft and refreshed. A lovely add-on before or after massage.</p>
+            <p>A gentle exfoliating treatment that leaves skin soft and refreshed before or after massage.</p>
           </div>
         </article>
 
       </div>
+
     </div>
   </section>
 
-  <section class="section prices-section section-warm" id="prices">
-    <div class="container prices-grid">
+  <section class="thai-section thai-prices" id="prices">
+    <div class="container thai-prices-grid">
+
       <div>
-        <p class="eyebrow">Prices</p>
+        <p class="thai-eyebrow">Prices</p>
 
         <h2>Simple, transparent pricing.</h2>
 
@@ -161,98 +162,77 @@ description: A warm, professional website template for Thai massage studios, wel
         </p>
       </div>
 
-      <div class="price-card">
-        <div class="price-row"><span>Head, Neck & Shoulder · 30 min</span><strong>£30</strong></div>
-        <div class="price-row"><span>Thai / Deep Tissue / Aromatherapy · 60 min</span><strong>£45</strong></div>
-        <div class="price-row"><span>Extended Full-Body Treatment · 90 min</span><strong>£65</strong></div>
-        <div class="price-row"><span>Couples Massage · 60 min</span><strong>£85</strong></div>
+      <div class="thai-price-card">
+        <div><span>Head, Neck & Shoulder · 30 min</span><strong>£30</strong></div>
+        <div><span>Thai / Deep Tissue / Aromatherapy · 60 min</span><strong>£45</strong></div>
+        <div><span>Extended Full-Body Treatment · 90 min</span><strong>£65</strong></div>
+        <div><span>Couples Massage · 60 min</span><strong>£85</strong></div>
       </div>
+
     </div>
   </section>
 
-  <section class="section reviews-section" id="reviews">
+  <section class="thai-section thai-reviews" id="reviews">
     <div class="container">
 
-      <div class="reviews-header">
-        <div>
-          <p class="eyebrow light">Reviews</p>
-          <h2>What our clients say.</h2>
-        </div>
+      <div class="thai-section-heading">
+        <p class="thai-eyebrow">Reviews</p>
+        <h2>What our clients say.</h2>
+        <p>4.9 ★★★★★ Example client rating</p>
+      </div>
 
-        <div class="reviews-summary">
-          <strong>4.9</strong>
+      <div class="thai-review-grid">
+
+        <article class="thai-review-card">
           <span>★★★★★</span>
-          <p>Example client rating</p>
-        </div>
+          <p>“I came in with a stiff neck I’d had for weeks and walked out moving freely.”</p>
+          <h3>Example review</h3>
+        </article>
+
+        <article class="thai-review-card">
+          <span>★★★★★</span>
+          <p>“The most relaxing hour I’ve had in ages. Calm, professional and spotlessly clean.”</p>
+          <h3>Example review</h3>
+        </article>
+
+        <article class="thai-review-card">
+          <span>★★★★★</span>
+          <p>“Genuinely skilled deep tissue work. My back has felt better all week.”</p>
+          <h3>Example review</h3>
+        </article>
+
       </div>
-
-      <div class="review-slider" aria-label="Example client reviews">
-        <button class="review-arrow review-arrow-prev" type="button" aria-label="Previous review">‹</button>
-
-        <div class="review-window">
-          <div class="review-track">
-
-            <article class="review-card is-active">
-              <div class="review-stars">★★★★★</div>
-              <p>“I came in with a stiff neck I’d had for weeks and walked out moving freely. The therapist really listened to where I needed work.”</p>
-              <h3>Example review</h3>
-            </article>
-
-            <article class="review-card">
-              <div class="review-stars">★★★★★</div>
-              <p>“The most relaxing hour I’ve had in ages. Calm, professional and spotlessly clean — I’ve already booked again.”</p>
-              <h3>Example review</h3>
-            </article>
-
-            <article class="review-card">
-              <div class="review-stars">★★★★★</div>
-              <p>“Booked the couples massage for our anniversary. Lovely, peaceful experience from start to finish.”</p>
-              <h3>Example review</h3>
-            </article>
-
-            <article class="review-card">
-              <div class="review-stars">★★★★★</div>
-              <p>“Genuinely skilled deep tissue work — not the fluffy kind. My back has felt better all week.”</p>
-              <h3>Example review</h3>
-            </article>
-
-          </div>
-        </div>
-
-        <button class="review-arrow review-arrow-next" type="button" aria-label="Next review">›</button>
-      </div>
-
-      <div class="review-dots" aria-label="Review controls"></div>
 
     </div>
   </section>
 
-  <section class="section contact-section section-light" id="contact">
-    <div class="container contact-grid">
+  <section class="thai-section thai-contact" id="contact">
+    <div class="container thai-contact-grid">
+
       <div>
-        <p class="eyebrow">Contact</p>
+        <p class="thai-eyebrow">Contact</p>
 
         <h2>Easy to find, easy to book.</h2>
 
         <p>
           Call or message to book your treatment, ask about availability,
-          or arrange a gift voucher. We’ll always do our best to fit you in.
+          or arrange a gift voucher.
         </p>
 
-        <div class="contact-actions">
-          <a href="tel:01234567890" class="btn btn-primary">Call 01234 567890</a>
-          <a href="mailto:hello@example.com?subject=Massage%20booking%20enquiry" class="btn btn-secondary">Email to book</a>
+        <div class="thai-actions">
+          <a href="tel:01234567890" class="thai-btn thai-btn-primary">Call 01234 567890</a>
+          <a href="mailto:hello@example.com?subject=Massage%20booking%20enquiry" class="thai-btn thai-btn-secondary">Email to book</a>
         </div>
       </div>
 
-      <div class="contact-image-card">
+      <div class="thai-location-card">
         <img
           src="{{ '/assets/images/shop-front-new.webp' | relative_url }}"
           alt="Lotus Thai Massage studio exterior"
           loading="lazy"
         >
 
-        <div class="contact-card">
+        <div>
           <h3>Lotus Thai Massage</h3>
 
           <p>
@@ -262,17 +242,18 @@ description: A warm, professional website template for Thai massage studios, wel
           </p>
 
           <p>
-            <strong>Opening hours:</strong><br>
-            Monday – Saturday · 9:00am – 5:00pm
+            <strong>Opening hours</strong><br>
+            Monday – Saturday<br>
+            9:00am – 5:00pm
           </p>
         </div>
       </div>
+
     </div>
   </section>
 
-  <a href="tel:01234567890" class="mobile-call-bar">
+  <a href="tel:01234567890" class="thai-mobile-call">
     Book now · 01234 567890
   </a>
 
 </main>
-
