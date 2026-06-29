@@ -1,29 +1,34 @@
 /* =========================================================
 THAI MASSAGE TEMPLATE — PART 1
-Base, header, nav, type, buttons, hero
+Base, dark header, navigation, type, buttons, hero
 ========================================================= */
 
 :root {
   --bg: #edf1ef;
   --bg-soft: #fbfaf6;
-  --bg-muted: #dfe7e4;
-  --cream: #f3ede3;
-  --warm: #e8ddd0;
-  --white: #ffffff;
+  --cream: #f4eee6;
+  --warm: #ebe1d3;
 
   --text: #17201f;
-  --muted: #5f6a68;
-  --dark: #14333a;
-  --dark-deep: #0e262c;
+  --muted: #62706d;
+
+  --dark: #10343c;
+  --dark-deep: #08272f;
+  --dark-soft: #173f47;
 
   --gold: #b98b45;
   --gold-soft: #ead7b6;
+  --gold-pale: #f4ead9;
+
+  --white: #ffffff;
 
   --border: rgba(23, 32, 31, 0.12);
   --border-strong: rgba(23, 32, 31, 0.2);
+  --border-light: rgba(255, 255, 255, 0.14);
 
   --shadow: 0 24px 70px rgba(23, 32, 31, 0.12);
   --shadow-soft: 0 14px 36px rgba(23, 32, 31, 0.08);
+  --shadow-dark: 0 16px 48px rgba(8, 39, 47, 0.26);
 
   --radius: 28px;
   --radius-lg: 38px;
@@ -72,7 +77,7 @@ select {
 }
 
 :focus-visible {
-  outline: 3px solid rgba(185, 139, 69, 0.42);
+  outline: 3px solid rgba(234, 215, 182, 0.7);
   outline-offset: 4px;
 }
 
@@ -91,10 +96,11 @@ select {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(237, 241, 239, 0.96);
-  border-bottom: 1px solid rgba(23, 32, 31, 0.08);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(185, 139, 69, 0.18), transparent 42%),
+    var(--dark-deep);
+  border-bottom: 1px solid rgba(234, 215, 182, 0.16);
+  box-shadow: 0 14px 34px rgba(8, 39, 47, 0.22);
 }
 
 .header-inner {
@@ -119,6 +125,7 @@ select {
   width: 236px;
   max-width: 60vw;
   height: auto;
+  filter: brightness(1.12) contrast(1.04);
 }
 
 .site-nav {
@@ -129,7 +136,7 @@ select {
 
 .site-nav a {
   position: relative;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.78);
   font-size: 0.94rem;
   font-weight: 800;
   letter-spacing: -0.01em;
@@ -144,14 +151,14 @@ select {
   right: 0;
   bottom: -8px;
   height: 1.5px;
-  background: var(--gold);
+  background: var(--gold-soft);
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 0.22s ease;
 }
 
 .site-nav a:hover {
-  color: var(--dark);
+  color: #fff;
 }
 
 .site-nav a:hover::after {
@@ -159,18 +166,21 @@ select {
 }
 
 .nav-button {
-  padding: 0;
-  border-radius: 0;
-  background: transparent;
-  color: var(--muted) !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 18px;
+  border: 1px solid rgba(234, 215, 182, 0.28);
+  border-radius: 999px;
+  background: rgba(234, 215, 182, 0.1);
+  color: #fff !important;
   box-shadow: none;
 }
 
 .nav-button:hover {
-  color: var(--dark) !important;
-  background: transparent;
-  transform: none;
-  box-shadow: none;
+  background: rgba(234, 215, 182, 0.18);
+  color: #fff !important;
 }
 
 /* Mobile nav */
@@ -185,9 +195,9 @@ select {
   display: none;
   width: 46px;
   height: 46px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(234, 215, 182, 0.28);
   border-radius: 999px;
-  background: rgba(251, 250, 246, 0.94);
+  background: rgba(255, 255, 255, 0.08);
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -195,7 +205,6 @@ select {
   cursor: pointer;
   position: relative;
   z-index: 1004;
-  box-shadow: 0 10px 30px rgba(23, 32, 31, 0.08);
 }
 
 .nav-toggle-label span {
@@ -203,7 +212,7 @@ select {
   width: 18px;
   height: 2px;
   border-radius: 999px;
-  background: var(--dark);
+  background: #fff;
   transition: transform 0.22s ease, opacity 0.22s ease;
 }
 
@@ -224,12 +233,12 @@ select {
 .demo-banner {
   position: relative;
   z-index: 5;
-  padding: 0.75rem 1rem;
+  padding: 0.7rem 1rem;
   border-bottom: 1px solid rgba(58, 47, 40, 0.12);
-  background: #f4eee6;
-  color: #3a2f28;
+  background: var(--cream);
+  color: #4b3c2d;
   text-align: center;
-  font-size: 0.86rem;
+  font-size: 0.84rem;
   line-height: 1.5;
 }
 
@@ -317,29 +326,28 @@ select {
 .button-primary {
   background: var(--dark);
   color: #fff;
-  box-shadow: 0 14px 30px rgba(20, 51, 58, 0.18);
+  box-shadow: var(--shadow-dark);
 }
 
 .thai-btn-primary:hover,
 .btn-primary:hover,
 .button-primary:hover {
   background: var(--dark-deep);
-  box-shadow: 0 18px 40px rgba(20, 51, 58, 0.24);
 }
 
 .thai-btn-secondary,
 .btn-secondary,
 .button-secondary {
-  border: 1px solid var(--border-strong);
-  background: rgba(251, 250, 246, 0.78);
+  border: 1px solid rgba(185, 139, 69, 0.34);
+  background: #fff;
   color: var(--dark);
 }
 
 .thai-btn-secondary:hover,
 .btn-secondary:hover,
 .button-secondary:hover {
-  background: #fff;
-  border-color: rgba(185, 139, 69, 0.45);
+  background: var(--gold-pale);
+  border-color: rgba(185, 139, 69, 0.55);
 }
 
 .thai-actions {
@@ -371,10 +379,10 @@ select {
 /* Hero */
 
 .thai-hero {
-  padding: 96px 0 92px;
+  padding: 104px 0 98px;
   background:
-    radial-gradient(circle at 10% 8%, rgba(185, 139, 69, 0.16), transparent 31%),
-    radial-gradient(circle at 88% 0%, rgba(255, 255, 255, 0.74), transparent 30%),
+    radial-gradient(circle at 8% 12%, rgba(185, 139, 69, 0.16), transparent 34%),
+    radial-gradient(circle at 88% 6%, rgba(255, 255, 255, 0.78), transparent 32%),
     linear-gradient(135deg, #edf1ef 0%, #dfe7e4 100%);
 }
 
@@ -424,7 +432,7 @@ select {
 }
 /* =========================================================
 THAI MASSAGE TEMPLATE — PART 2
-Sections, welcome, services, prices, reviews, contact, footer
+Sections, cards, prices, reviews, contact, footer
 ========================================================= */
 
 .thai-section {
@@ -474,8 +482,8 @@ Sections, welcome, services, prices, reviews, contact, footer
 
 .thai-services {
   background:
-    radial-gradient(circle at 92% 12%, rgba(255, 255, 255, 0.52), transparent 28%),
-    var(--cream);
+    radial-gradient(circle at 92% 12%, rgba(255, 255, 255, 0.64), transparent 28%),
+    linear-gradient(180deg, var(--cream), #efe6d8);
 }
 
 .thai-service-list {
@@ -491,9 +499,9 @@ Sections, welcome, services, prices, reviews, contact, footer
   align-items: stretch;
   min-height: 178px;
   padding: 18px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(185, 139, 69, 0.16);
   border-radius: 28px;
-  background: rgba(251, 250, 246, 0.92);
+  background: rgba(255, 255, 255, 0.88);
   box-shadow: var(--shadow-soft);
   transition:
     transform 0.24s ease,
@@ -503,7 +511,7 @@ Sections, welcome, services, prices, reviews, contact, footer
 
 .thai-service-card:hover {
   transform: translateY(-4px);
-  border-color: var(--border-strong);
+  border-color: rgba(185, 139, 69, 0.34);
   box-shadow: 0 22px 52px rgba(23, 32, 31, 0.11);
 }
 
@@ -540,7 +548,7 @@ Sections, welcome, services, prices, reviews, contact, footer
 
 .thai-prices {
   background:
-    radial-gradient(circle at 12% 8%, rgba(185, 139, 69, 0.12), transparent 30%),
+    radial-gradient(circle at 12% 8%, rgba(185, 139, 69, 0.13), transparent 30%),
     var(--bg-soft);
 }
 
@@ -558,7 +566,7 @@ Sections, welcome, services, prices, reviews, contact, footer
 
 .thai-price-card {
   padding: 34px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(185, 139, 69, 0.18);
   border-radius: 34px;
   background: #fff;
   box-shadow: var(--shadow);
@@ -569,7 +577,7 @@ Sections, welcome, services, prices, reviews, contact, footer
   justify-content: space-between;
   gap: 24px;
   padding: 20px 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(23, 32, 31, 0.1);
 }
 
 .thai-price-card div:first-child {
@@ -599,8 +607,8 @@ Sections, welcome, services, prices, reviews, contact, footer
 
 .thai-reviews {
   background:
-    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08), transparent 34%),
-    var(--dark);
+    radial-gradient(circle at 50% 0%, rgba(185, 139, 69, 0.18), transparent 36%),
+    linear-gradient(180deg, var(--dark), var(--dark-deep));
 }
 
 .thai-reviews .thai-eyebrow,
@@ -622,7 +630,7 @@ Sections, welcome, services, prices, reviews, contact, footer
 .thai-review-card {
   min-height: 250px;
   padding: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(234, 215, 182, 0.16);
   border-radius: 30px;
   background: rgba(255, 255, 255, 0.075);
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
@@ -652,7 +660,9 @@ Sections, welcome, services, prices, reviews, contact, footer
 
 .thai-contact {
   padding-bottom: 128px;
-  background: var(--bg-soft);
+  background:
+    radial-gradient(circle at 8% 16%, rgba(185, 139, 69, 0.12), transparent 30%),
+    var(--bg-soft);
 }
 
 .thai-contact-grid {
@@ -668,7 +678,7 @@ Sections, welcome, services, prices, reviews, contact, footer
 
 .thai-location-card {
   overflow: hidden;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(185, 139, 69, 0.18);
   border-radius: 34px;
   background: #fff;
   box-shadow: var(--shadow);
@@ -717,14 +727,16 @@ Sections, welcome, services, prices, reviews, contact, footer
   color: #fff;
   font-size: 0.96rem;
   font-weight: 950;
-  box-shadow: 0 16px 40px rgba(20, 51, 58, 0.26);
+  box-shadow: var(--shadow-dark);
 }
 
 /* Footer */
 
 .site-footer {
-  padding: 76px 0;
-  background: #102f38;
+  padding: 84px 0;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(185, 139, 69, 0.18), transparent 38%),
+    var(--dark-deep);
   text-align: center;
 }
 
@@ -734,9 +746,18 @@ Sections, welcome, services, prices, reviews, contact, footer
   text-align: center;
 }
 
+.footer-simple img,
+.footer-logo,
+.site-footer img {
+  max-width: 430px;
+  width: min(430px, 82vw);
+  margin: 0 auto 28px;
+  filter: brightness(1.14) contrast(1.05);
+}
+
 .footer-kicker {
   margin: 0 0 14px;
-  color: rgba(255, 255, 255, 0.62);
+  color: rgba(234, 215, 182, 0.7);
   font-size: 0.72rem;
   font-weight: 900;
   letter-spacing: 0.2em;
@@ -755,7 +776,7 @@ Sections, welcome, services, prices, reviews, contact, footer
 .footer-description {
   max-width: 620px;
   margin: 0 auto 26px;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.68);
   font-size: 1rem;
 }
 
@@ -773,7 +794,7 @@ Sections, welcome, services, prices, reviews, contact, footer
   justify-content: center;
   min-height: 44px;
   padding: 0 18px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(234, 215, 182, 0.2);
   border-radius: 999px;
   color: #fff;
   font-size: 0.92rem;
@@ -786,20 +807,20 @@ Sections, welcome, services, prices, reviews, contact, footer
 
 .footer-links a:hover {
   transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.36);
-  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(234, 215, 182, 0.38);
+  background: rgba(234, 215, 182, 0.08);
 }
 
 .footer-disclaimer {
   max-width: 620px;
   margin: 0 auto 22px;
-  color: rgba(255, 255, 255, 0.52);
+  color: rgba(255, 255, 255, 0.48);
   font-size: 0.9rem;
 }
 
 .footer-copyright {
   margin: 0;
-  color: rgba(255, 255, 255, 0.38);
+  color: rgba(255, 255, 255, 0.36);
   font-size: 0.86rem;
 }
 /* =========================================================
@@ -870,7 +891,9 @@ Responsive, mobile polish, accessibility
   }
 
   .site-header {
-    background: rgba(237, 241, 239, 0.98);
+    background:
+      radial-gradient(circle at 50% 0%, rgba(185, 139, 69, 0.18), transparent 44%),
+      var(--dark-deep);
   }
 
   .header-inner {
@@ -898,7 +921,7 @@ Responsive, mobile polish, accessibility
   }
 
   .nav-toggle:checked + .nav-toggle-label {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.14);
   }
 
   .site-nav {
@@ -914,8 +937,8 @@ Responsive, mobile polish, accessibility
     overflow-y: auto;
     padding: 112px 26px 38px;
     background:
-      radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.36), transparent 36%),
-      var(--bg);
+      radial-gradient(circle at 50% 0%, rgba(185, 139, 69, 0.2), transparent 36%),
+      var(--dark-deep);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -937,8 +960,8 @@ Responsive, mobile polish, accessibility
     display: block;
     width: 100%;
     padding: 18px 0;
-    border-bottom: 1px solid rgba(23, 32, 31, 0.1);
-    color: var(--text);
+    border-bottom: 1px solid rgba(234, 215, 182, 0.12);
+    color: rgba(255, 255, 255, 0.86);
     font-size: 1.24rem;
     font-weight: 850;
     line-height: 1.2;
@@ -959,8 +982,8 @@ Responsive, mobile polish, accessibility
   }
 
   .site-nav a:hover {
-    color: var(--gold);
-    border-color: rgba(185, 139, 69, 0.28);
+    color: var(--gold-soft);
+    border-color: rgba(234, 215, 182, 0.28);
   }
 
   .site-nav a::after {
@@ -975,16 +998,16 @@ Responsive, mobile polish, accessibility
     min-height: 58px;
     margin-top: 38px;
     border-radius: 999px;
-    background: var(--dark);
-    color: #fff !important;
+    background: var(--gold-soft);
+    color: var(--dark-deep) !important;
     font-size: 1rem;
-    font-weight: 900;
-    box-shadow: 0 14px 30px rgba(20, 51, 58, 0.2);
+    font-weight: 950;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
   }
 
   .site-nav .nav-button:hover {
-    background: var(--dark-deep);
-    color: #fff !important;
+    background: #fff;
+    color: var(--dark-deep) !important;
   }
 
   .demo-banner {
@@ -1154,11 +1177,18 @@ Responsive, mobile polish, accessibility
   }
 
   .site-footer {
-    padding: 58px 0 104px;
+    padding: 62px 0 104px;
   }
 
   .footer-simple {
     max-width: 520px;
+  }
+
+  .footer-simple img,
+  .footer-logo,
+  .site-footer img {
+    width: min(330px, 82vw);
+    margin-bottom: 22px;
   }
 
   .footer-links {
