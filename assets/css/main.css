@@ -1,6 +1,6 @@
 /* =========================================================
 THAI MASSAGE TEMPLATE — PART 1
-Base, dark header, navigation, type, buttons, hero
+Base, white-on-dark header, navigation, type, buttons, hero
 ========================================================= */
 
 :root {
@@ -24,7 +24,7 @@ Base, dark header, navigation, type, buttons, hero
 
   --border: rgba(23, 32, 31, 0.12);
   --border-strong: rgba(23, 32, 31, 0.2);
-  --border-light: rgba(255, 255, 255, 0.14);
+  --border-light: rgba(255, 255, 255, 0.16);
 
   --shadow: 0 24px 70px rgba(23, 32, 31, 0.12);
   --shadow-soft: 0 14px 36px rgba(23, 32, 31, 0.08);
@@ -77,7 +77,7 @@ select {
 }
 
 :focus-visible {
-  outline: 3px solid rgba(234, 215, 182, 0.7);
+  outline: 3px solid rgba(255, 255, 255, 0.72);
   outline-offset: 4px;
 }
 
@@ -97,10 +97,10 @@ select {
   top: 0;
   z-index: 1000;
   background:
-    radial-gradient(circle at 50% 0%, rgba(185, 139, 69, 0.18), transparent 42%),
-    var(--dark-deep);
-  border-bottom: 1px solid rgba(234, 215, 182, 0.16);
-  box-shadow: 0 14px 34px rgba(8, 39, 47, 0.22);
+    radial-gradient(circle at 50% 0%, rgba(185, 139, 69, 0.14), transparent 44%),
+    linear-gradient(180deg, #0b3038 0%, #08272f 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 14px 34px rgba(8, 39, 47, 0.24);
 }
 
 .header-inner {
@@ -125,7 +125,7 @@ select {
   width: 236px;
   max-width: 60vw;
   height: auto;
-  filter: brightness(1.12) contrast(1.04);
+  filter: brightness(0) invert(1);
 }
 
 .site-nav {
@@ -136,9 +136,9 @@ select {
 
 .site-nav a {
   position: relative;
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.86);
   font-size: 0.94rem;
-  font-weight: 800;
+  font-weight: 850;
   letter-spacing: -0.01em;
   white-space: nowrap;
   transition: color 0.2s ease;
@@ -151,7 +151,7 @@ select {
   right: 0;
   bottom: -8px;
   height: 1.5px;
-  background: var(--gold-soft);
+  background: #fff;
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 0.22s ease;
@@ -171,15 +171,15 @@ select {
   justify-content: center;
   min-height: 42px;
   padding: 0 18px;
-  border: 1px solid rgba(234, 215, 182, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.34);
   border-radius: 999px;
-  background: rgba(234, 215, 182, 0.1);
+  background: rgba(255, 255, 255, 0.1);
   color: #fff !important;
   box-shadow: none;
 }
 
 .nav-button:hover {
-  background: rgba(234, 215, 182, 0.18);
+  background: rgba(255, 255, 255, 0.18);
   color: #fff !important;
 }
 
@@ -195,7 +195,7 @@ select {
   display: none;
   width: 46px;
   height: 46px;
-  border: 1px solid rgba(234, 215, 182, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.32);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
   align-items: center;
@@ -381,7 +381,7 @@ select {
 .thai-hero {
   padding: 104px 0 98px;
   background:
-    radial-gradient(circle at 8% 12%, rgba(185, 139, 69, 0.16), transparent 34%),
+    radial-gradient(circle at 8% 12%, rgba(185, 139, 69, 0.14), transparent 34%),
     radial-gradient(circle at 88% 6%, rgba(255, 255, 255, 0.78), transparent 32%),
     linear-gradient(135deg, #edf1ef 0%, #dfe7e4 100%);
 }
@@ -431,397 +431,436 @@ select {
   filter: brightness(1.04) contrast(0.97) saturate(0.94);
 }
 /* =========================================================
-THAI MASSAGE TEMPLATE — PART 2
-Sections, cards, prices, reviews, contact, footer
+THAI MASSAGE TEMPLATE — PART 1
+Base, white-on-dark header, navigation, type, buttons, hero
 ========================================================= */
 
-.thai-section {
-  padding: 104px 0;
+:root {
+  --bg: #edf1ef;
+  --bg-soft: #fbfaf6;
+  --cream: #f4eee6;
+  --warm: #ebe1d3;
+
+  --text: #17201f;
+  --muted: #62706d;
+
+  --dark: #10343c;
+  --dark-deep: #08272f;
+  --dark-soft: #173f47;
+
+  --gold: #b98b45;
+  --gold-soft: #ead7b6;
+  --gold-pale: #f4ead9;
+
+  --white: #ffffff;
+
+  --border: rgba(23, 32, 31, 0.12);
+  --border-strong: rgba(23, 32, 31, 0.2);
+  --border-light: rgba(255, 255, 255, 0.16);
+
+  --shadow: 0 24px 70px rgba(23, 32, 31, 0.12);
+  --shadow-soft: 0 14px 36px rgba(23, 32, 31, 0.08);
+  --shadow-dark: 0 16px 48px rgba(8, 39, 47, 0.26);
+
+  --radius: 28px;
+  --radius-lg: 38px;
+  --container: 1160px;
+  --header-height: 92px;
 }
 
-.thai-welcome {
-  background: var(--bg-soft);
+* {
+  box-sizing: border-box;
 }
 
-.thai-split {
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 112px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body:has(.nav-toggle:checked) {
+  overflow: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.72);
+  outline-offset: 4px;
+}
+
+.thai-page {
+  overflow: hidden;
+}
+
+.container {
+  width: min(var(--container), calc(100% - 44px));
+  margin: 0 auto;
+}
+
+/* Header */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(185, 139, 69, 0.14), transparent 44%),
+    linear-gradient(180deg, #0b3038 0%, #08272f 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 14px 34px rgba(8, 39, 47, 0.24);
+}
+
+.header-inner {
+  min-height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 38px;
+  position: relative;
+}
+
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1004;
+}
+
+.header-logo-img,
+.site-logo-image {
+  width: 236px;
+  max-width: 60vw;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.site-nav a {
+  position: relative;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.94rem;
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 1.5px;
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.22s ease;
+}
+
+.site-nav a:hover {
+  color: #fff;
+}
+
+.site-nav a:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 18px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff !important;
+  box-shadow: none;
+}
+
+.nav-button:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff !important;
+}
+
+/* Mobile nav */
+
+.nav-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-toggle-label {
+  display: none;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1004;
+}
+
+.nav-toggle-label span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: #fff;
+  transition: transform 0.22s ease, opacity 0.22s ease;
+}
+
+.nav-toggle:checked + .nav-toggle-label span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle:checked + .nav-toggle-label span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle:checked + .nav-toggle-label span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Demo banner */
+
+.demo-banner {
+  position: relative;
+  z-index: 5;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid rgba(58, 47, 40, 0.12);
+  background: var(--cream);
+  color: #4b3c2d;
+  text-align: center;
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+/* Type */
+
+.thai-page h1,
+.thai-page h2,
+.thai-page h3,
+.thai-page p {
+  margin-top: 0;
+}
+
+.thai-eyebrow,
+.eyebrow {
+  margin: 0 0 14px;
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 950;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.thai-page h1 {
+  max-width: 720px;
+  margin-bottom: 24px;
+  color: var(--dark);
+  font-size: clamp(3rem, 5.5vw, 5.55rem);
+  line-height: 0.96;
+  letter-spacing: -0.076em;
+  text-wrap: balance;
+}
+
+.thai-page h2 {
+  margin-bottom: 18px;
+  color: var(--dark);
+  font-size: clamp(2.15rem, 4vw, 3.55rem);
+  line-height: 1.02;
+  letter-spacing: -0.065em;
+  text-wrap: balance;
+}
+
+.thai-page h3 {
+  margin-bottom: 8px;
+  color: var(--dark);
+  font-size: 1.05rem;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+
+.thai-page p {
+  color: var(--muted);
+  font-size: 1.04rem;
+}
+
+/* Buttons */
+
+.thai-btn,
+.btn,
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0 24px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 900;
+  line-height: 1;
+  transition:
+    transform 0.22s ease,
+    background 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease,
+    color 0.22s ease;
+}
+
+.thai-btn:hover,
+.btn:hover,
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.thai-btn-primary,
+.btn-primary,
+.button-primary {
+  background: var(--dark);
+  color: #fff;
+  box-shadow: var(--shadow-dark);
+}
+
+.thai-btn-primary:hover,
+.btn-primary:hover,
+.button-primary:hover {
+  background: var(--dark-deep);
+}
+
+.thai-btn-secondary,
+.btn-secondary,
+.button-secondary {
+  border: 1px solid rgba(185, 139, 69, 0.34);
+  background: #fff;
+  color: var(--dark);
+}
+
+.thai-btn-secondary:hover,
+.btn-secondary:hover,
+.button-secondary:hover {
+  background: var(--gold-pale);
+  border-color: rgba(185, 139, 69, 0.55);
+}
+
+.thai-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.thai-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  color: var(--dark);
+  font-weight: 950;
+}
+
+.thai-text-link::after {
+  content: "→";
+  color: var(--gold);
+  transition: transform 0.2s ease;
+}
+
+.thai-text-link:hover::after {
+  transform: translateX(4px);
+}
+
+/* Hero */
+
+.thai-hero {
+  padding: 104px 0 98px;
+  background:
+    radial-gradient(circle at 8% 12%, rgba(185, 139, 69, 0.14), transparent 34%),
+    radial-gradient(circle at 88% 6%, rgba(255, 255, 255, 0.78), transparent 32%),
+    linear-gradient(135deg, #edf1ef 0%, #dfe7e4 100%);
+}
+
+.thai-hero-grid {
   display: grid;
   grid-template-columns: 0.92fr 1.08fr;
-  gap: 70px;
+  gap: 74px;
   align-items: center;
 }
 
-.thai-image-card {
+.thai-hero-copy {
+  max-width: 660px;
+}
+
+.thai-hero-copy > p:not(.thai-eyebrow) {
+  max-width: 610px;
+  margin-bottom: 0;
+  color: #536160;
+  font-size: clamp(1.12rem, 1.5vw, 1.28rem);
+  line-height: 1.66;
+}
+
+.thai-hero-image {
   position: relative;
-  min-height: 430px;
+  min-height: clamp(430px, 48vw, 580px);
   overflow: hidden;
-  border-radius: 36px;
-  background: #d7c7b6;
+  border-radius: var(--radius-lg);
+  background: #c9c0b2;
   box-shadow: var(--shadow);
 }
 
-.thai-image-card img {
+.thai-hero-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(20, 51, 58, 0.12), transparent 45%);
+  pointer-events: none;
+}
+
+.thai-hero-image img {
   width: 100%;
   height: 100%;
   min-height: inherit;
   object-fit: cover;
   object-position: center;
-  filter: brightness(1.03) contrast(0.98) saturate(0.95);
-}
-
-.thai-section-heading {
-  max-width: 760px;
-  margin-bottom: 42px;
-}
-
-.thai-section-heading p:last-child {
-  max-width: 660px;
-  margin-bottom: 0;
-}
-
-/* Services */
-
-.thai-services {
-  background:
-    radial-gradient(circle at 92% 12%, rgba(255, 255, 255, 0.64), transparent 28%),
-    linear-gradient(180deg, var(--cream), #efe6d8);
-}
-
-.thai-service-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-.thai-service-card {
-  display: grid;
-  grid-template-columns: 150px 1fr;
-  gap: 22px;
-  align-items: stretch;
-  min-height: 178px;
-  padding: 18px;
-  border: 1px solid rgba(185, 139, 69, 0.16);
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.88);
-  box-shadow: var(--shadow-soft);
-  transition:
-    transform 0.24s ease,
-    box-shadow 0.24s ease,
-    border-color 0.24s ease;
-}
-
-.thai-service-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(185, 139, 69, 0.34);
-  box-shadow: 0 22px 52px rgba(23, 32, 31, 0.11);
-}
-
-.thai-service-card img {
-  width: 100%;
-  height: 100%;
-  min-height: 142px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 22px;
-  background: #d8c9b8;
-}
-
-.thai-service-card div {
-  padding: 10px 8px 10px 0;
-}
-
-.thai-service-card span {
-  display: block;
-  margin-bottom: 12px;
-  color: var(--gold);
-  font-size: 0.78rem;
-  font-weight: 950;
-  letter-spacing: 0.08em;
-}
-
-.thai-service-card p {
-  margin-bottom: 0;
-  font-size: 0.97rem;
-  line-height: 1.52;
-}
-
-/* Prices */
-
-.thai-prices {
-  background:
-    radial-gradient(circle at 12% 8%, rgba(185, 139, 69, 0.13), transparent 30%),
-    var(--bg-soft);
-}
-
-.thai-prices-grid {
-  display: grid;
-  grid-template-columns: 0.82fr 1.18fr;
-  gap: 68px;
-  align-items: center;
-}
-
-.thai-prices-grid > div:first-child p:last-child {
-  max-width: 520px;
-  margin-bottom: 0;
-}
-
-.thai-price-card {
-  padding: 34px;
-  border: 1px solid rgba(185, 139, 69, 0.18);
-  border-radius: 34px;
-  background: #fff;
-  box-shadow: var(--shadow);
-}
-
-.thai-price-card div {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(23, 32, 31, 0.1);
-}
-
-.thai-price-card div:first-child {
-  padding-top: 0;
-}
-
-.thai-price-card div:last-child {
-  padding-bottom: 0;
-  border-bottom: 0;
-}
-
-.thai-price-card span {
-  color: var(--text);
-  font-size: 1rem;
-  font-weight: 800;
-  line-height: 1.4;
-}
-
-.thai-price-card strong {
-  color: var(--dark);
-  font-size: 1.06rem;
-  font-weight: 950;
-  white-space: nowrap;
-}
-
-/* Reviews */
-
-.thai-reviews {
-  background:
-    radial-gradient(circle at 50% 0%, rgba(185, 139, 69, 0.18), transparent 36%),
-    linear-gradient(180deg, var(--dark), var(--dark-deep));
-}
-
-.thai-reviews .thai-eyebrow,
-.thai-reviews h2 {
-  color: #fff;
-}
-
-.thai-reviews .thai-section-heading p:last-child {
-  color: rgba(255, 255, 255, 0.72);
-  font-weight: 800;
-}
-
-.thai-review-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-
-.thai-review-card {
-  min-height: 250px;
-  padding: 30px;
-  border: 1px solid rgba(234, 215, 182, 0.16);
-  border-radius: 30px;
-  background: rgba(255, 255, 255, 0.075);
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
-}
-
-.thai-review-card span {
-  display: block;
-  margin-bottom: 22px;
-  color: var(--gold-soft);
-  font-size: 0.95rem;
-  letter-spacing: 0.08em;
-}
-
-.thai-review-card p {
-  margin-bottom: 22px;
-  color: rgba(255, 255, 255, 0.86);
-  font-size: 1.04rem;
-  line-height: 1.6;
-}
-
-.thai-review-card h3 {
-  margin-bottom: 0;
-  color: #fff;
-}
-
-/* Contact */
-
-.thai-contact {
-  padding-bottom: 128px;
-  background:
-    radial-gradient(circle at 8% 16%, rgba(185, 139, 69, 0.12), transparent 30%),
-    var(--bg-soft);
-}
-
-.thai-contact-grid {
-  display: grid;
-  grid-template-columns: 0.82fr 1.18fr;
-  gap: 68px;
-  align-items: center;
-}
-
-.thai-contact-grid > div:first-child p:not(.thai-eyebrow) {
-  max-width: 560px;
-}
-
-.thai-location-card {
-  overflow: hidden;
-  border: 1px solid rgba(185, 139, 69, 0.18);
-  border-radius: 34px;
-  background: #fff;
-  box-shadow: var(--shadow);
-}
-
-.thai-location-card img {
-  width: 100%;
-  height: 330px;
-  object-fit: cover;
-  object-position: center;
-}
-
-.thai-location-card > div {
-  padding: 32px;
-}
-
-.thai-location-card h3 {
-  margin-bottom: 14px;
-  font-size: 1.28rem;
-}
-
-.thai-location-card p {
-  margin-bottom: 18px;
-}
-
-.thai-location-card p:last-child {
-  margin-bottom: 0;
-}
-
-.thai-location-card strong {
-  color: var(--dark);
-}
-
-.thai-mobile-call {
-  position: fixed;
-  left: 16px;
-  right: 16px;
-  bottom: 16px;
-  z-index: 900;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  min-height: 54px;
-  border-radius: 999px;
-  background: var(--dark);
-  color: #fff;
-  font-size: 0.96rem;
-  font-weight: 950;
-  box-shadow: var(--shadow-dark);
-}
-
-/* Footer */
-
-.site-footer {
-  padding: 84px 0;
-  background:
-    radial-gradient(circle at 50% 0%, rgba(185, 139, 69, 0.18), transparent 38%),
-    var(--dark-deep);
-  text-align: center;
-}
-
-.footer-simple {
-  max-width: 760px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.footer-simple img,
-.footer-logo,
-.site-footer img {
-  max-width: 430px;
-  width: min(430px, 82vw);
-  margin: 0 auto 28px;
-  filter: brightness(1.14) contrast(1.05);
-}
-
-.footer-kicker {
-  margin: 0 0 14px;
-  color: rgba(234, 215, 182, 0.7);
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-
-.footer-title {
-  margin: 0 0 14px;
-  color: #fff;
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
-  line-height: 1.05;
-  font-weight: 900;
-  letter-spacing: -0.055em;
-}
-
-.footer-description {
-  max-width: 620px;
-  margin: 0 auto 26px;
-  color: rgba(255, 255, 255, 0.68);
-  font-size: 1rem;
-}
-
-.footer-links {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 30px;
-}
-
-.footer-links a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  padding: 0 18px;
-  border: 1px solid rgba(234, 215, 182, 0.2);
-  border-radius: 999px;
-  color: #fff;
-  font-size: 0.92rem;
-  font-weight: 850;
-  transition:
-    background 0.22s ease,
-    transform 0.22s ease,
-    border-color 0.22s ease;
-}
-
-.footer-links a:hover {
-  transform: translateY(-2px);
-  border-color: rgba(234, 215, 182, 0.38);
-  background: rgba(234, 215, 182, 0.08);
-}
-
-.footer-disclaimer {
-  max-width: 620px;
-  margin: 0 auto 22px;
-  color: rgba(255, 255, 255, 0.48);
-  font-size: 0.9rem;
-}
-
-.footer-copyright {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.36);
-  font-size: 0.86rem;
+  filter: brightness(1.04) contrast(0.97) saturate(0.94);
 }
 /* =========================================================
 THAI MASSAGE TEMPLATE — PART 3
@@ -892,8 +931,8 @@ Responsive, mobile polish, accessibility
 
   .site-header {
     background:
-      radial-gradient(circle at 50% 0%, rgba(185, 139, 69, 0.18), transparent 44%),
-      var(--dark-deep);
+      radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.1), transparent 44%),
+      linear-gradient(180deg, #0b3038 0%, #08272f 100%);
   }
 
   .header-inner {
@@ -910,6 +949,7 @@ Responsive, mobile polish, accessibility
   .site-logo-image {
     width: 214px;
     max-width: 66vw;
+    filter: brightness(0) invert(1);
   }
 
   .nav-toggle-label {
@@ -937,7 +977,7 @@ Responsive, mobile polish, accessibility
     overflow-y: auto;
     padding: 112px 26px 38px;
     background:
-      radial-gradient(circle at 50% 0%, rgba(185, 139, 69, 0.2), transparent 36%),
+      radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.11), transparent 36%),
       var(--dark-deep);
     opacity: 0;
     visibility: hidden;
@@ -960,8 +1000,8 @@ Responsive, mobile polish, accessibility
     display: block;
     width: 100%;
     padding: 18px 0;
-    border-bottom: 1px solid rgba(234, 215, 182, 0.12);
-    color: rgba(255, 255, 255, 0.86);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+    color: rgba(255, 255, 255, 0.9);
     font-size: 1.24rem;
     font-weight: 850;
     line-height: 1.2;
@@ -982,8 +1022,8 @@ Responsive, mobile polish, accessibility
   }
 
   .site-nav a:hover {
-    color: var(--gold-soft);
-    border-color: rgba(234, 215, 182, 0.28);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.32);
   }
 
   .site-nav a::after {
@@ -998,7 +1038,7 @@ Responsive, mobile polish, accessibility
     min-height: 58px;
     margin-top: 38px;
     border-radius: 999px;
-    background: var(--gold-soft);
+    background: #fff;
     color: var(--dark-deep) !important;
     font-size: 1rem;
     font-weight: 950;
@@ -1006,7 +1046,7 @@ Responsive, mobile polish, accessibility
   }
 
   .site-nav .nav-button:hover {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.9);
     color: var(--dark-deep) !important;
   }
 
@@ -1189,6 +1229,7 @@ Responsive, mobile polish, accessibility
   .site-footer img {
     width: min(330px, 82vw);
     margin-bottom: 22px;
+    filter: brightness(0) invert(1);
   }
 
   .footer-links {
