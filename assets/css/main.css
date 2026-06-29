@@ -1,24 +1,34 @@
 /* =========================================================
-CSS PART 1 — BASE, HEADER, MOBILE NAV, TYPE, BUTTONS
+THAI MASSAGE TEMPLATE — PART 1
+Base, header, nav, type, buttons, hero
 ========================================================= */
 
 :root {
   --bg: #edf1ef;
   --bg-soft: #fbfaf6;
   --bg-muted: #dfe7e4;
-  --text: #121b1a;
-  --muted: #5c6867;
-  --accent: #2f4c59;
-  --accent-dark: #18343d;
-  --accent-soft: #d7e3e3;
-  --warm: #f3ede3;
+  --cream: #f3ede3;
+  --warm: #e8ddd0;
   --white: #ffffff;
-  --border: rgba(18, 27, 26, 0.12);
-  --border-strong: rgba(18, 27, 26, 0.18);
-  --shadow: 0 30px 90px rgba(18, 27, 26, 0.12);
-  --shadow-soft: 0 18px 48px rgba(18, 27, 26, 0.075);
-  --radius: 30px;
-  --container: 1180px;
+
+  --text: #17201f;
+  --muted: #5f6a68;
+  --dark: #14333a;
+  --dark-deep: #0e262c;
+
+  --gold: #b98b45;
+  --gold-soft: #ead7b6;
+
+  --border: rgba(23, 32, 31, 0.12);
+  --border-strong: rgba(23, 32, 31, 0.2);
+
+  --shadow: 0 24px 70px rgba(23, 32, 31, 0.12);
+  --shadow-soft: 0 14px 36px rgba(23, 32, 31, 0.08);
+
+  --radius: 28px;
+  --radius-lg: 38px;
+  --container: 1160px;
+  --header-height: 92px;
 }
 
 * {
@@ -40,9 +50,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+body:has(.nav-toggle:checked) {
+  overflow: hidden;
+}
+
 img {
-  max-width: 100%;
   display: block;
+  max-width: 100%;
 }
 
 a {
@@ -50,23 +64,25 @@ a {
   text-decoration: none;
 }
 
-.site-main,
-.page-main {
-  overflow: hidden;
+button,
+input,
+textarea,
+select {
+  font: inherit;
 }
 
-section[id],
-main[id] {
-  scroll-margin-top: 112px;
+:focus-visible {
+  outline: 3px solid rgba(185, 139, 69, 0.42);
+  outline-offset: 4px;
+}
+
+.thai-page {
+  overflow: hidden;
 }
 
 .container {
   width: min(var(--container), calc(100% - 44px));
   margin: 0 auto;
-}
-
-.narrow {
-  max-width: 760px;
 }
 
 /* Header */
@@ -75,23 +91,22 @@ main[id] {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(237, 241, 239, 0.94);
+  background: rgba(237, 241, 239, 0.96);
+  border-bottom: 1px solid rgba(23, 32, 31, 0.08);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(18, 27, 26, 0.08);
 }
 
 .header-inner {
-  min-height: 92px;
+  min-height: var(--header-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
+  gap: 38px;
   position: relative;
 }
 
-.site-logo,
-.site-logo-image {
+.site-logo {
   display: inline-flex;
   align-items: center;
   flex-shrink: 0;
@@ -99,8 +114,9 @@ main[id] {
   z-index: 1004;
 }
 
-.header-logo-img {
-  width: 240px;
+.header-logo-img,
+.site-logo-image {
+  width: 236px;
   max-width: 60vw;
   height: auto;
 }
@@ -108,17 +124,17 @@ main[id] {
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 34px;
+  gap: 32px;
 }
 
 .site-nav a {
   position: relative;
   color: var(--muted);
-  font-size: 0.95rem;
-  font-weight: 750;
+  font-size: 0.94rem;
+  font-weight: 800;
   letter-spacing: -0.01em;
   white-space: nowrap;
-  transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .site-nav a::after {
@@ -128,14 +144,14 @@ main[id] {
   right: 0;
   bottom: -8px;
   height: 1.5px;
-  background: var(--accent);
+  background: var(--gold);
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 0.22s ease;
 }
 
 .site-nav a:hover {
-  color: var(--text);
+  color: var(--dark);
 }
 
 .site-nav a:hover::after {
@@ -151,13 +167,13 @@ main[id] {
 }
 
 .nav-button:hover {
+  color: var(--dark) !important;
   background: transparent;
-  color: var(--text) !important;
   transform: none;
   box-shadow: none;
 }
 
-/* Mobile toggle */
+/* Mobile nav */
 
 .nav-toggle {
   position: absolute;
@@ -179,7 +195,7 @@ main[id] {
   cursor: pointer;
   position: relative;
   z-index: 1004;
-  box-shadow: 0 10px 30px rgba(18, 27, 26, 0.08);
+  box-shadow: 0 10px 30px rgba(23, 32, 31, 0.08);
 }
 
 .nav-toggle-label span {
@@ -187,7 +203,7 @@ main[id] {
   width: 18px;
   height: 2px;
   border-radius: 999px;
-  background: var(--accent-dark);
+  background: var(--dark);
   transition: transform 0.22s ease, opacity 0.22s ease;
 }
 
@@ -203,168 +219,177 @@ main[id] {
   transform: translateY(-7px) rotate(-45deg);
 }
 
+/* Demo banner */
+
+.demo-banner {
+  position: relative;
+  z-index: 5;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(58, 47, 40, 0.12);
+  background: #f4eee6;
+  color: #3a2f28;
+  text-align: center;
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
 /* Type */
 
+.thai-page h1,
+.thai-page h2,
+.thai-page h3,
+.thai-page p {
+  margin-top: 0;
+}
+
+.thai-eyebrow,
 .eyebrow {
   margin: 0 0 14px;
-  color: var(--accent);
+  color: var(--gold);
   font-size: 0.72rem;
-  font-weight: 900;
+  font-weight: 950;
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
-h1,
-h2,
-h3,
-p {
-  margin-top: 0;
-}
-
-h1 {
-  max-width: 760px;
-  margin-bottom: 26px;
-  font-size: clamp(3.15rem, 5.7vw, 5.75rem);
+.thai-page h1 {
+  max-width: 720px;
+  margin-bottom: 24px;
+  color: var(--dark);
+  font-size: clamp(3rem, 5.5vw, 5.55rem);
   line-height: 0.96;
   letter-spacing: -0.076em;
   text-wrap: balance;
 }
 
-h2 {
+.thai-page h2 {
   margin-bottom: 18px;
-  font-size: clamp(2.25rem, 4vw, 3.65rem);
+  color: var(--dark);
+  font-size: clamp(2.15rem, 4vw, 3.55rem);
   line-height: 1.02;
   letter-spacing: -0.065em;
   text-wrap: balance;
 }
 
-h3 {
-  margin-bottom: 10px;
-  font-size: 1.08rem;
-  line-height: 1.28;
+.thai-page h3 {
+  margin-bottom: 8px;
+  color: var(--dark);
+  font-size: 1.05rem;
+  line-height: 1.25;
   letter-spacing: -0.025em;
 }
 
-p {
+.thai-page p {
   color: var(--muted);
   font-size: 1.04rem;
 }
 
-/* Buttons and links */
+/* Buttons */
 
+.thai-btn,
+.btn,
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 50px;
-  padding: 0 25px;
+  padding: 0 24px;
   border-radius: 999px;
+  font-size: 0.95rem;
   font-weight: 900;
-  transition: transform 0.22s ease, background 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  line-height: 1;
+  transition:
+    transform 0.22s ease,
+    background 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease,
+    color 0.22s ease;
 }
 
+.thai-btn:hover,
+.btn:hover,
 .button:hover {
   transform: translateY(-2px);
 }
 
+.thai-btn-primary,
+.btn-primary,
 .button-primary {
-  background: var(--accent);
+  background: var(--dark);
   color: #fff;
-  box-shadow: 0 14px 30px rgba(24, 52, 61, 0.16);
+  box-shadow: 0 14px 30px rgba(20, 51, 58, 0.18);
 }
 
+.thai-btn-primary:hover,
+.btn-primary:hover,
 .button-primary:hover {
-  background: var(--accent-dark);
-  box-shadow: 0 18px 40px rgba(24, 52, 61, 0.22);
+  background: var(--dark-deep);
+  box-shadow: 0 18px 40px rgba(20, 51, 58, 0.24);
 }
 
+.thai-btn-secondary,
+.btn-secondary,
 .button-secondary {
   border: 1px solid var(--border-strong);
-  background: rgba(251, 250, 246, 0.72);
-  color: var(--accent-dark);
+  background: rgba(251, 250, 246, 0.78);
+  color: var(--dark);
 }
 
+.thai-btn-secondary:hover,
+.btn-secondary:hover,
 .button-secondary:hover {
-  border-color: rgba(47, 76, 89, 0.35);
   background: #fff;
+  border-color: rgba(185, 139, 69, 0.45);
 }
 
-.text-link,
-.about-link {
+.thai-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.thai-text-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: 14px;
-  color: var(--accent);
-  font-weight: 900;
+  margin-top: 12px;
+  color: var(--dark);
+  font-weight: 950;
 }
 
-.text-link::after,
-.about-link::after {
+.thai-text-link::after {
   content: "→";
+  color: var(--gold);
   transition: transform 0.2s ease;
 }
 
-.text-link:hover,
-.about-link:hover {
-  color: var(--accent-dark);
-}
-
-.text-link:hover::after,
-.about-link:hover::after {
+.thai-text-link:hover::after {
   transform: translateX(4px);
-}
-/* =========================================================
-CSS PART 2 — TEMPLATE NOTICE, HERO, SECTIONS, CARDS, PANELS, FOOTER
-========================================================= */
-
-/* Template notice */
-
-.template-notice {
-  position: relative;
-  z-index: 5;
-  padding: 14px 0;
-  background: var(--accent-dark);
-  color: #fff;
-}
-
-.template-notice-inner {
-  text-align: center;
-}
-
-.template-notice p {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.86);
-  font-size: 0.94rem;
-  line-height: 1.5;
-}
-
-.template-notice strong {
-  color: #fff;
 }
 
 /* Hero */
 
-.hero {
-  padding: 104px 0 96px;
+.thai-hero {
+  padding: 96px 0 92px;
   background:
-    radial-gradient(circle at 8% 10%, rgba(47, 76, 89, 0.11), transparent 34%),
-    radial-gradient(circle at 78% 0%, rgba(255, 255, 255, 0.7), transparent 30%),
+    radial-gradient(circle at 10% 8%, rgba(185, 139, 69, 0.16), transparent 31%),
+    radial-gradient(circle at 88% 0%, rgba(255, 255, 255, 0.74), transparent 30%),
     linear-gradient(135deg, #edf1ef 0%, #dfe7e4 100%);
 }
 
-.hero-grid {
+.thai-hero-grid {
   display: grid;
   grid-template-columns: 0.92fr 1.08fr;
-  gap: 76px;
+  gap: 74px;
   align-items: center;
 }
 
-.hero-content {
-  max-width: 650px;
+.thai-hero-copy {
+  max-width: 660px;
 }
 
-.hero-text {
+.thai-hero-copy > p:not(.thai-eyebrow) {
   max-width: 610px;
   margin-bottom: 0;
   color: #536160;
@@ -372,445 +397,327 @@ CSS PART 2 — TEMPLATE NOTICE, HERO, SECTIONS, CARDS, PANELS, FOOTER
   line-height: 1.66;
 }
 
-.template-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 26px;
-}
-
-.template-meta span {
-  display: inline-flex;
-  align-items: center;
-  min-height: 36px;
-  padding: 0 14px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: rgba(251, 250, 246, 0.72);
-  color: var(--accent-dark);
-  font-size: 0.82rem;
-  font-weight: 850;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 32px;
-}
-
-.hero-image-wrap {
+.thai-hero-image {
   position: relative;
-  height: clamp(450px, 48vw, 600px);
+  min-height: clamp(430px, 48vw, 580px);
   overflow: hidden;
-  border-radius: 38px;
-  background: #c9c7bf;
+  border-radius: var(--radius-lg);
+  background: #c9c0b2;
   box-shadow: var(--shadow);
 }
 
-.hero-image-wrap::after {
+.thai-hero-image::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, rgba(18, 27, 26, 0.08), transparent 42%);
+  background: linear-gradient(0deg, rgba(20, 51, 58, 0.12), transparent 45%);
   pointer-events: none;
 }
 
-.hero-image {
+.thai-hero-image img {
   width: 100%;
   height: 100%;
+  min-height: inherit;
   object-fit: cover;
   object-position: center;
   filter: brightness(1.04) contrast(0.97) saturate(0.94);
-  transform: scale(1.01);
+}
+/* =========================================================
+THAI MASSAGE TEMPLATE — PART 2
+Sections, welcome, services, prices, reviews, contact, footer
+========================================================= */
+
+.thai-section {
+  padding: 104px 0;
 }
 
-.image-label {
-  position: absolute;
-  right: 18px;
-  bottom: 18px;
-  z-index: 3;
-  padding: 8px 13px;
-  border-radius: 999px;
-  background: rgba(251, 250, 246, 0.9);
-  color: var(--accent-dark);
-  font-size: 0.76rem;
-  font-weight: 900;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  box-shadow: 0 10px 28px rgba(18, 27, 26, 0.16);
-}
-
-/* Sections */
-
-.section {
-  padding: 108px 0;
-}
-
-.statement-section {
+.thai-welcome {
   background: var(--bg-soft);
 }
 
-.statement-inner {
-  max-width: 880px;
-  text-align: center;
-}
-
-.statement-inner h2 {
-  max-width: 820px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.statement-inner p:last-child {
-  max-width: 680px;
-  margin: 0 auto;
-}
-
-.muted-section {
-  background:
-    radial-gradient(circle at 92% 12%, rgba(255, 255, 255, 0.48), transparent 26%),
-    var(--bg-muted);
-}
-
-.customise-section {
-  background:
-    radial-gradient(circle at 10% 10%, rgba(47, 76, 89, 0.08), transparent 30%),
-    var(--bg-soft);
-}
-
-.section-heading {
-  max-width: 760px;
-  margin-bottom: 42px;
-}
-
-.section-heading p {
-  max-width: 660px;
-}
-
-.split-heading {
-  max-width: none;
-  display: grid;
-  grid-template-columns: 0.95fr 0.7fr;
-  gap: 52px;
-  align-items: end;
-}
-
-.split-heading p:last-child {
-  margin-bottom: 8px;
-}
-
-/* Cards and steps */
-
-.card-grid,
-.customise-grid {
-  display: grid;
-  gap: 20px;
-}
-
-.card-grid {
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.customise-grid {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.card,
-.step,
-.customise-card,
-.fee-card,
-.contact-card {
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: rgba(251, 250, 246, 0.92);
-  box-shadow: var(--shadow-soft);
-}
-
-.card,
-.customise-card {
-  padding: 30px;
-  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
-}
-
-.card {
-  min-height: 236px;
-}
-
-.customise-card {
-  min-height: 190px;
-}
-
-.card:hover,
-.customise-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--border-strong);
-  box-shadow: 0 24px 56px rgba(18, 27, 26, 0.1);
-}
-
-.card-icon {
-  width: 43px;
-  height: 43px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 22px;
-  border-radius: 15px;
-  background: var(--accent-soft);
-  color: var(--accent-dark);
-  font-weight: 950;
-}
-
-.card p,
-.customise-card p {
-  margin-bottom: 0;
-}
-
-.process-section {
-  background: var(--bg-muted);
-}
-
-.process-panel {
-  display: grid;
-  grid-template-columns: 0.78fr 1.22fr;
-  gap: 54px;
-  align-items: center;
-  padding: 54px;
-  border: 1px solid var(--border);
-  border-radius: calc(var(--radius) + 12px);
-  background: rgba(251, 250, 246, 0.92);
-  box-shadow: var(--shadow);
-}
-
-.process-panel h2 {
-  margin-bottom: 0;
-}
-
-.process-steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-}
-
-.process-step {
-  min-height: 128px;
-  padding: 22px;
-  border-radius: 24px;
-  background: #fff;
-  border: 1px solid var(--border);
-}
-
-.process-step span {
-  display: block;
-  margin-bottom: 16px;
-  color: var(--accent);
-  font-weight: 950;
-}
-
-.process-step p {
-  margin: 0;
-  color: var(--text);
-  font-size: 0.98rem;
-  font-weight: 850;
-  line-height: 1.28;
-}
-
-.two-column {
-  display: grid;
-  grid-template-columns: 0.78fr 1.22fr;
-  gap: 76px;
-  align-items: start;
-}
-
-.sticky-copy {
-  position: sticky;
-  top: 136px;
-}
-
-.sticky-copy p {
-  max-width: 520px;
-}
-
-.steps {
-  display: grid;
-  gap: 18px;
-}
-
-.step {
-  display: grid;
-  grid-template-columns: 58px 1fr;
-  gap: 22px;
-  padding: 30px;
-  background: rgba(251, 250, 246, 0.94);
-  transition: transform 0.22s ease, border-color 0.22s ease;
-}
-
-.step:hover {
-  transform: translateX(4px);
-  border-color: var(--border-strong);
-}
-
-.step span {
-  color: var(--accent);
-  font-weight: 950;
-}
-
-.step p {
-  margin-bottom: 0;
-}
-
-/* Image section */
-
-.soft-image-section {
-  background:
-    radial-gradient(circle at 12% 12%, rgba(47, 76, 89, 0.08), transparent 28%),
-    var(--warm);
-}
-
-.image-content-grid {
+.thai-split {
   display: grid;
   grid-template-columns: 0.92fr 1.08fr;
   gap: 70px;
   align-items: center;
 }
 
-.soft-image {
+.thai-image-card {
   position: relative;
-  min-height: 440px;
+  min-height: 430px;
   overflow: hidden;
-  border-radius: 38px;
-  background: var(--accent-soft);
+  border-radius: 36px;
+  background: #d7c7b6;
   box-shadow: var(--shadow);
 }
 
-.soft-image img {
+.thai-image-card img {
   width: 100%;
   height: 100%;
+  min-height: inherit;
   object-fit: cover;
+  object-position: center;
   filter: brightness(1.03) contrast(0.98) saturate(0.95);
-  transition: transform 0.5s ease;
 }
 
-.soft-image:hover img {
-  transform: scale(1.035);
+.thai-section-heading {
+  max-width: 760px;
+  margin-bottom: 42px;
 }
 
-/* Check list */
-
-.check-list {
-  display: grid;
-  gap: 16px;
-  margin-top: 28px;
-}
-
-.check-item {
-  display: flex;
-  gap: 13px;
-  align-items: flex-start;
-  color: var(--muted);
-}
-
-.check-item p {
+.thai-section-heading p:last-child {
+  max-width: 660px;
   margin-bottom: 0;
 }
 
-.check-item span {
-  flex: 0 0 auto;
-  width: 28px;
-  height: 28px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: var(--accent);
-  color: #fff;
-  font-size: 0.86rem;
-  font-weight: 950;
+/* Services */
+
+.thai-services {
+  background:
+    radial-gradient(circle at 92% 12%, rgba(255, 255, 255, 0.52), transparent 28%),
+    var(--cream);
 }
 
-/* Panels */
+.thai-service-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
 
-.first-session-section {
+.thai-service-card {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 22px;
+  align-items: stretch;
+  min-height: 178px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: rgba(251, 250, 246, 0.92);
+  box-shadow: var(--shadow-soft);
+  transition:
+    transform 0.24s ease,
+    box-shadow 0.24s ease,
+    border-color 0.24s ease;
+}
+
+.thai-service-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-strong);
+  box-shadow: 0 22px 52px rgba(23, 32, 31, 0.11);
+}
+
+.thai-service-card img {
+  width: 100%;
+  height: 100%;
+  min-height: 142px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 22px;
+  background: #d8c9b8;
+}
+
+.thai-service-card div {
+  padding: 10px 8px 10px 0;
+}
+
+.thai-service-card span {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+}
+
+.thai-service-card p {
+  margin-bottom: 0;
+  font-size: 0.97rem;
+  line-height: 1.52;
+}
+
+/* Prices */
+
+.thai-prices {
   background:
-    radial-gradient(circle at top right, rgba(47, 76, 89, 0.1), transparent 34%),
+    radial-gradient(circle at 12% 8%, rgba(185, 139, 69, 0.12), transparent 30%),
     var(--bg-soft);
 }
 
-.first-session-panel,
-.about-panel {
+.thai-prices-grid {
   display: grid;
-  gap: 62px;
-  padding: 58px;
-  border-radius: calc(var(--radius) + 12px);
-  box-shadow: var(--shadow-soft);
-}
-
-.first-session-panel {
   grid-template-columns: 0.82fr 1.18fr;
-  border: 1px solid var(--border);
-  background: #fff;
+  gap: 68px;
+  align-items: center;
 }
 
-.about-panel {
-  grid-template-columns: 0.86fr 1.14fr;
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  background: rgba(251, 250, 246, 0.94);
-  box-shadow: var(--shadow);
-}
-
-.first-session-panel p:last-of-type {
+.thai-prices-grid > div:first-child p:last-child {
+  max-width: 520px;
   margin-bottom: 0;
 }
 
-.about-panel p {
+.thai-price-card {
+  padding: 34px;
+  border: 1px solid var(--border);
+  border-radius: 34px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.thai-price-card div {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.thai-price-card div:first-child {
+  padding-top: 0;
+}
+
+.thai-price-card div:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.thai-price-card span {
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.thai-price-card strong {
+  color: var(--dark);
   font-size: 1.06rem;
+  font-weight: 950;
+  white-space: nowrap;
+}
+
+/* Reviews */
+
+.thai-reviews {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08), transparent 34%),
+    var(--dark);
+}
+
+.thai-reviews .thai-eyebrow,
+.thai-reviews h2 {
+  color: #fff;
+}
+
+.thai-reviews .thai-section-heading p:last-child {
+  color: rgba(255, 255, 255, 0.72);
+  font-weight: 800;
+}
+
+.thai-review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.thai-review-card {
+  min-height: 250px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.075);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+}
+
+.thai-review-card span {
+  display: block;
+  margin-bottom: 22px;
+  color: var(--gold-soft);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+}
+
+.thai-review-card p {
+  margin-bottom: 22px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 1.04rem;
+  line-height: 1.6;
+}
+
+.thai-review-card h3 {
+  margin-bottom: 0;
+  color: #fff;
 }
 
 /* Contact */
 
-.contact-section {
-  padding: 98px 0;
-  background:
-    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08), transparent 34%),
-    var(--accent-dark);
-  text-align: center;
-}
-
-.contact-section h2,
-.contact-section p,
-.contact-section .eyebrow {
-  color: #fff;
-}
-
-.contact-section p {
-  max-width: 660px;
-  margin-left: auto;
-  margin-right: auto;
-  color: rgba(255, 255, 255, 0.78);
-}
-
-.contact-section .button-primary {
-  margin-top: 18px;
-  background: #fff;
-  color: var(--accent-dark);
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
-}
-
-.contact-section .button-primary:hover {
+.thai-contact {
+  padding-bottom: 128px;
   background: var(--bg-soft);
 }
 
-.contact-small {
-  margin-top: 24px;
-  margin-bottom: 0;
-  font-size: 0.94rem;
+.thai-contact-grid {
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: 68px;
+  align-items: center;
 }
 
-.contact-small a {
+.thai-contact-grid > div:first-child p:not(.thai-eyebrow) {
+  max-width: 560px;
+}
+
+.thai-location-card {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 34px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.thai-location-card img {
+  width: 100%;
+  height: 330px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.thai-location-card > div {
+  padding: 32px;
+}
+
+.thai-location-card h3 {
+  margin-bottom: 14px;
+  font-size: 1.28rem;
+}
+
+.thai-location-card p {
+  margin-bottom: 18px;
+}
+
+.thai-location-card p:last-child {
+  margin-bottom: 0;
+}
+
+.thai-location-card strong {
+  color: var(--dark);
+}
+
+.thai-mobile-call {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 900;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  border-radius: 999px;
+  background: var(--dark);
   color: #fff;
-  font-weight: 900;
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  font-size: 0.96rem;
+  font-weight: 950;
+  box-shadow: 0 16px 40px rgba(20, 51, 58, 0.26);
 }
 
 /* Footer */
@@ -871,7 +778,10 @@ CSS PART 2 — TEMPLATE NOTICE, HERO, SECTIONS, CARDS, PANELS, FOOTER
   color: #fff;
   font-size: 0.92rem;
   font-weight: 850;
-  transition: background 0.22s ease, transform 0.22s ease, border-color 0.22s ease;
+  transition:
+    background 0.22s ease,
+    transform 0.22s ease,
+    border-color 0.22s ease;
 }
 
 .footer-links a:hover {
@@ -892,111 +802,61 @@ CSS PART 2 — TEMPLATE NOTICE, HERO, SECTIONS, CARDS, PANELS, FOOTER
   color: rgba(255, 255, 255, 0.38);
   font-size: 0.86rem;
 }
-
-/* Inner pages */
-
-.page-hero {
-  padding: 102px 0 76px;
-  background:
-    radial-gradient(circle at top left, rgba(47, 76, 89, 0.12), transparent 36%),
-    linear-gradient(135deg, #edf1ef 0%, #dfe7e4 100%);
-  text-align: center;
-}
-
-.page-hero h1 {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.page-hero p {
-  max-width: 680px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 1.14rem;
-}
-
-.content-page {
-  max-width: 780px;
-}
-
-.content-page h2 {
-  margin-top: 44px;
-  font-size: clamp(1.7rem, 3vw, 2.4rem);
-}
-
-.content-page h2:first-child {
-  margin-top: 0;
-}
-
-.content-page p {
-  font-size: 1.08rem;
-}
-
-.fee-card,
-.contact-card {
-  padding: 34px;
-  margin-bottom: 24px;
-  background: var(--bg-soft);
-  box-shadow: var(--shadow);
-}
-
-.fee-price {
-  margin-bottom: 8px;
-  color: var(--accent);
-  font-size: 2.8rem !important;
-  font-weight: 950;
-  line-height: 1;
-}
-
-.contact-card a {
-  color: var(--accent);
-  font-weight: 900;
-}
 /* =========================================================
-CSS PART 3 — RESPONSIVE, FULLSCREEN MOBILE NAV, MOBILE POLISH
+THAI MASSAGE TEMPLATE — PART 3
+Responsive, mobile polish, accessibility
 ========================================================= */
 
+@media (min-width: 1280px) {
+  .thai-hero {
+    padding-top: 112px;
+    padding-bottom: 108px;
+  }
+
+  .thai-section {
+    padding-top: 116px;
+    padding-bottom: 116px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .site-nav {
+    gap: 24px;
+  }
+
+  .header-logo-img,
+  .site-logo-image {
+    width: 220px;
+  }
+}
+
 @media (max-width: 1000px) {
-  .hero-grid,
-  .two-column,
-  .about-panel,
-  .image-content-grid,
-  .first-session-panel,
-  .split-heading,
-  .process-panel {
+  .thai-hero-grid,
+  .thai-split,
+  .thai-prices-grid,
+  .thai-contact-grid {
     grid-template-columns: 1fr;
-    gap: 42px;
+    gap: 44px;
   }
 
-  .sticky-copy {
-    position: static;
+  .thai-hero {
+    padding: 78px 0 76px;
   }
 
-  .hero {
-    padding: 78px 0 74px;
-  }
-
-  .hero-content {
+  .thai-hero-copy {
     max-width: 760px;
   }
 
-  .hero-image-wrap {
-    height: 520px;
+  .thai-hero-image {
+    min-height: 500px;
   }
 
-  .card-grid,
-  .customise-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .thai-service-list {
+    grid-template-columns: 1fr;
   }
 
-  .process-steps {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .about-panel,
-  .first-session-panel,
-  .process-panel {
-    padding: 42px;
+  .thai-review-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1005,21 +865,12 @@ CSS PART 3 — RESPONSIVE, FULLSCREEN MOBILE NAV, MOBILE POLISH
     scroll-padding-top: 82px;
   }
 
-  body:has(.nav-toggle:checked) {
-    overflow: hidden;
-  }
-
-  section[id],
-  main[id] {
-    scroll-margin-top: 82px;
+  .container {
+    width: min(100% - 30px, var(--container));
   }
 
   .site-header {
     background: rgba(237, 241, 239, 0.98);
-  }
-
-  .container {
-    width: min(100% - 30px, var(--container));
   }
 
   .header-inner {
@@ -1032,8 +883,9 @@ CSS PART 3 — RESPONSIVE, FULLSCREEN MOBILE NAV, MOBILE POLISH
     min-width: 0;
   }
 
-  .header-logo-img {
-    width: 220px;
+  .header-logo-img,
+  .site-logo-image {
+    width: 214px;
     max-width: 66vw;
   }
 
@@ -1062,13 +914,16 @@ CSS PART 3 — RESPONSIVE, FULLSCREEN MOBILE NAV, MOBILE POLISH
     overflow-y: auto;
     padding: 112px 26px 38px;
     background:
-      radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.35), transparent 36%),
+      radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.36), transparent 36%),
       var(--bg);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
     transform: translateY(-8px);
-    transition: opacity 0.28s ease, visibility 0.28s ease, transform 0.28s ease;
+    transition:
+      opacity 0.28s ease,
+      visibility 0.28s ease,
+      transform 0.28s ease;
   }
 
   .nav-toggle:checked ~ .site-nav {
@@ -1082,7 +937,7 @@ CSS PART 3 — RESPONSIVE, FULLSCREEN MOBILE NAV, MOBILE POLISH
     display: block;
     width: 100%;
     padding: 18px 0;
-    border-bottom: 1px solid rgba(18, 27, 26, 0.1);
+    border-bottom: 1px solid rgba(23, 32, 31, 0.1);
     color: var(--text);
     font-size: 1.24rem;
     font-weight: 850;
@@ -1091,7 +946,11 @@ CSS PART 3 — RESPONSIVE, FULLSCREEN MOBILE NAV, MOBILE POLISH
     text-align: center;
     opacity: 0;
     transform: translateY(8px);
-    transition: opacity 0.28s ease, transform 0.28s ease, color 0.22s ease, border-color 0.22s ease;
+    transition:
+      opacity 0.28s ease,
+      transform 0.28s ease,
+      color 0.22s ease,
+      border-color 0.22s ease;
   }
 
   .nav-toggle:checked ~ .site-nav a {
@@ -1100,9 +959,8 @@ CSS PART 3 — RESPONSIVE, FULLSCREEN MOBILE NAV, MOBILE POLISH
   }
 
   .site-nav a:hover {
-    background: transparent;
-    color: var(--accent);
-    border-color: rgba(47, 76, 89, 0.28);
+    color: var(--gold);
+    border-color: rgba(185, 139, 69, 0.28);
   }
 
   .site-nav a::after {
@@ -1115,163 +973,192 @@ CSS PART 3 — RESPONSIVE, FULLSCREEN MOBILE NAV, MOBILE POLISH
     justify-content: center;
     width: 100%;
     min-height: 58px;
-    margin-top: 40px;
+    margin-top: 38px;
     border-radius: 999px;
-    background: var(--accent);
+    background: var(--dark);
     color: #fff !important;
     font-size: 1rem;
     font-weight: 900;
-    box-shadow: 0 14px 30px rgba(24, 52, 61, 0.2);
+    box-shadow: 0 14px 30px rgba(20, 51, 58, 0.2);
   }
 
   .site-nav .nav-button:hover {
-    background: var(--accent-dark);
+    background: var(--dark-deep);
     color: #fff !important;
   }
 
-  .template-notice {
-    padding: 12px 0;
+  .demo-banner {
+    padding: 0.65rem 0.9rem;
+    font-size: 0.78rem;
   }
 
-  .template-notice p {
-    font-size: 0.86rem;
+  .thai-hero {
+    padding: 48px 0 58px;
   }
 
-  .page-hero {
-    padding: 76px 0 60px;
+  .thai-hero-grid {
+    gap: 32px;
+  }
+
+  .thai-page h1 {
+    margin-bottom: 18px;
+    font-size: clamp(2.25rem, 11vw, 3.35rem);
+    line-height: 1;
+    letter-spacing: -0.065em;
+  }
+
+  .thai-page h2 {
+    font-size: clamp(1.85rem, 8.4vw, 2.65rem);
+    line-height: 1.04;
+    letter-spacing: -0.055em;
+  }
+
+  .thai-page h3 {
+    font-size: 1rem;
+  }
+
+  .thai-page p {
+    font-size: 0.98rem;
+  }
+
+  .thai-eyebrow,
+  .eyebrow {
+    margin-bottom: 11px;
+    font-size: 0.64rem;
+    letter-spacing: 0.17em;
+  }
+
+  .thai-hero-copy > p:not(.thai-eyebrow) {
+    font-size: 1.06rem;
+    line-height: 1.58;
+  }
+
+  .thai-actions {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .thai-btn,
+  .btn,
+  .button {
+    width: 100%;
+    min-height: 54px;
+  }
+
+  .thai-hero-image {
+    min-height: 310px;
+    border-radius: 28px;
+  }
+
+  .thai-section {
+    padding: 64px 0;
+  }
+
+  .thai-section-heading {
+    margin-bottom: 30px;
+  }
+
+  .thai-split {
+    gap: 30px;
+  }
+
+  .thai-image-card {
+    min-height: 280px;
+    border-radius: 28px;
+  }
+
+  .thai-service-list {
+    gap: 14px;
+  }
+
+  .thai-service-card {
+    grid-template-columns: 112px 1fr;
+    gap: 16px;
+    min-height: 142px;
+    padding: 12px;
+    border-radius: 22px;
+  }
+
+  .thai-service-card img {
+    min-height: 118px;
+    border-radius: 18px;
+  }
+
+  .thai-service-card div {
+    padding: 4px 2px 4px 0;
+  }
+
+  .thai-service-card span {
+    margin-bottom: 7px;
+    font-size: 0.68rem;
+  }
+
+  .thai-service-card h3 {
+    margin-bottom: 5px;
+  }
+
+  .thai-service-card p {
+    font-size: 0.88rem;
+    line-height: 1.42;
+  }
+
+  .thai-price-card {
+    padding: 24px;
+    border-radius: 26px;
+  }
+
+  .thai-price-card div {
+    gap: 18px;
+    padding: 16px 0;
+  }
+
+  .thai-price-card span,
+  .thai-price-card strong {
+    font-size: 0.94rem;
+  }
+
+  .thai-review-card {
+    min-height: auto;
+    padding: 24px;
+    border-radius: 24px;
+  }
+
+  .thai-review-card span {
+    margin-bottom: 16px;
+  }
+
+  .thai-review-card p {
+    margin-bottom: 16px;
+    font-size: 0.98rem;
+  }
+
+  .thai-contact {
+    padding-bottom: 100px;
+  }
+
+  .thai-location-card {
+    border-radius: 26px;
+  }
+
+  .thai-location-card img {
+    height: 240px;
+  }
+
+  .thai-location-card > div {
+    padding: 24px;
+  }
+
+  .thai-mobile-call {
+    display: flex;
   }
 
   .site-footer {
-    padding: 58px 0 44px;
+    padding: 58px 0 104px;
   }
 
   .footer-simple {
     max-width: 520px;
-  }
-}
-
-@media (max-width: 620px) {
-  .hero {
-    padding: 46px 0 58px;
-  }
-
-  .hero-grid {
-    gap: 34px;
-  }
-
-  .hero-content {
-    max-width: none;
-  }
-
-  h1 {
-    margin-bottom: 20px;
-    font-size: clamp(2.65rem, 12.5vw, 4.05rem);
-    line-height: 0.99;
-    letter-spacing: -0.07em;
-  }
-
-  h2 {
-    font-size: clamp(2.05rem, 9vw, 2.95rem);
-  }
-
-  h3 {
-    font-size: 1.02rem;
-  }
-
-  p {
-    font-size: 1rem;
-  }
-
-  .eyebrow {
-    margin-bottom: 12px;
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
-  }
-
-  .hero-text {
-    font-size: 1.16rem;
-    line-height: 1.62;
-  }
-
-  .template-meta {
-    gap: 8px;
-    margin-top: 22px;
-  }
-
-  .template-meta span {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    margin-top: 28px;
-  }
-
-  .button {
-    width: 100%;
-    min-height: 56px;
-  }
-
-  .hero-image-wrap {
-    height: 410px;
-    border-radius: 30px;
-  }
-
-  .image-label {
-    right: 14px;
-    bottom: 14px;
-    font-size: 0.68rem;
-  }
-
-  .section {
-    padding: 72px 0;
-  }
-
-  .card-grid,
-  .customise-grid,
-  .process-steps {
-    grid-template-columns: 1fr;
-  }
-
-  .card,
-  .customise-card {
-    min-height: auto;
-    padding: 28px;
-    border-radius: 24px;
-  }
-
-  .process-panel {
-    padding: 30px;
-    border-radius: 28px;
-  }
-
-  .process-step {
-    min-height: auto;
-  }
-
-  .step {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 28px;
-    border-radius: 24px;
-  }
-
-  .soft-image {
-    min-height: 330px;
-    border-radius: 30px;
-  }
-
-  .about-panel,
-  .first-session-panel {
-    gap: 26px;
-    padding: 30px;
-    border-radius: 28px;
-  }
-
-  .contact-section {
-    padding: 78px 0;
   }
 
   .footer-links {
@@ -1283,14 +1170,30 @@ CSS PART 3 — RESPONSIVE, FULLSCREEN MOBILE NAV, MOBILE POLISH
   }
 }
 
+@media (max-width: 520px) {
+  .thai-service-card {
+    grid-template-columns: 1fr;
+  }
+
+  .thai-service-card img {
+    height: 190px;
+    min-height: 190px;
+  }
+
+  .thai-service-card div {
+    padding: 8px 4px 6px;
+  }
+}
+
 @media (max-width: 430px) {
   .header-inner {
     min-height: 76px;
     gap: 10px;
   }
 
-  .header-logo-img {
-    width: 210px;
+  .header-logo-img,
+  .site-logo-image {
+    width: 204px;
     max-width: 64vw;
   }
 
@@ -1309,24 +1212,95 @@ CSS PART 3 — RESPONSIVE, FULLSCREEN MOBILE NAV, MOBILE POLISH
     font-size: 1.18rem;
   }
 
-  .site-nav .nav-button {
-    min-height: 58px;
+  .thai-hero {
+    padding-top: 42px;
   }
 
-  h1 {
-    font-size: clamp(2.5rem, 13.5vw, 3.75rem);
+  .thai-page h1 {
+    font-size: clamp(2.18rem, 12.2vw, 3rem);
   }
 
-  .hero-image-wrap {
-    height: 390px;
+  .thai-hero-image {
+    min-height: 270px;
+  }
+
+  .thai-section {
+    padding: 58px 0;
+  }
+
+  .thai-image-card {
+    min-height: 250px;
+  }
+
+  .thai-price-card div {
+    align-items: flex-start;
+  }
+
+  .thai-mobile-call {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
   }
 }
-.demo-banner {
-  background: #f4eee6;
-  color: #3a2f28;
-  text-align: center;
-  font-size: 0.85rem;
-  line-height: 1.5;
-  padding: 0.7rem 1rem;
-  border-bottom: 1px solid rgba(58, 47, 40, 0.12);
+
+@media (max-width: 360px) {
+  .container {
+    width: min(100% - 24px, var(--container));
+  }
+
+  .thai-page h1 {
+    font-size: 2.05rem;
+  }
+
+  .thai-page h2 {
+    font-size: 1.78rem;
+  }
+
+  .thai-service-card img {
+    height: 170px;
+    min-height: 170px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+@media print {
+  .site-header,
+  .demo-banner,
+  .thai-mobile-call,
+  .nav-toggle,
+  .nav-toggle-label {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .thai-page,
+  .thai-section {
+    background: #fff !important;
+  }
+
+  .thai-btn,
+  .btn,
+  .button {
+    border: 1px solid #000;
+    color: #000;
+    background: transparent;
+    box-shadow: none;
+  }
 }
